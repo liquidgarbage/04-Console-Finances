@@ -86,3 +86,43 @@ var finances = [
   ['Jan-2017', 138230],
   ['Feb-2017', 671099],
 ];
+
+//The total number of months included in the dataset.
+console.log('Total Months: '+finances.length);
+
+//The net total amount of Profit/Losses over the entire period.
+var sum = 0;
+
+for (var i = 0; i <finances.length; i++) {
+  sum +=finances[i][1];
+}
+console.log('Total: '+'$'+sum)
+
+//The average of the changes in Profit/Losses over the entire period. answer -2315.12
+
+var sum = 0;
+
+for (var i = 0; i < (finances.length -1 ); i++) {
+  sum += finances[i+1][1] - finances[i][1]
+}
+console.log('Average Change: '+Math.round(sum/85));
+
+// The greatest increase in profits (date and amount) over the entire period.
+
+//go through the arry comparing each no to each next no find bigest incrase in profit
+//go through array finance.lenth
+//compare nnos to find differences between each
+//print biggerest increase between two numbers
+
+//Math.min() and Math.max()
+//Math.min() and Math.max() can be used to find the lowest or highest value in a list of arguments:
+
+var sum = 0;
+
+
+
+
+
+
+
+// The greatest decrease in losses (date and amount) over the entire period.
