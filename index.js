@@ -87,6 +87,8 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+console.log('Financial Analysis')
+
 //The total number of months included in the dataset.
 console.log('Total Months: '+finances.length);
 
@@ -109,20 +111,33 @@ console.log('Average Change: '+Math.round(sum/85));
 
 // The greatest increase in profits (date and amount) over the entire period.
 
-//go through the arry comparing each no to each next no find bigest incrase in profit
-//go through array finance.lenth
-//compare nnos to find differences between each
-//print biggerest increase between two numbers
-
-//Math.min() and Math.max()
-//Math.min() and Math.max() can be used to find the lowest or highest value in a list of arguments:
-
 var sum = 0;
+var increase = 0;
+var month = '';
 
-
-
-
-
+for (var i = 1; i < finances.length; i++) {
+  var sum = finances[i][1] - finances[i - 1][1];
+  if (sum > increase) {
+    increase=sum;
+    month = finances[i][0];
+    increase = finances[i][1] - finances[i-1][1];
+  }
+}
+console.log('Greatest Increase in Profits/Losses: ' + month +' ($'+increase+')')
 
 
 // The greatest decrease in losses (date and amount) over the entire period.
+
+var sum = 0;
+var decrease = 0;
+var month = '';
+
+for (var i = 1; i < finances.length; i++) {
+  var sum = finances[i][1] - finances[i - 1][1];
+  if (sum < decrease) {
+    decrease=sum;
+    month = finances[i][0];
+    decrease = finances[i][1] - finances[i-1][1];
+  }
+}
+console.log('Greatest Decrease in Profits/Losses: ' + month +' ($'+decrease+')')
