@@ -101,7 +101,6 @@ for (var i = 0; i <finances.length; i++) {
 console.log('Total: '+'$'+sum)
 
 //The average of the changes in Profit/Losses over the entire period. answer -2315.12
-
 var sum = 0;
 
 for (var i = 0; i < (finances.length -1 ); i++) {
@@ -110,7 +109,6 @@ for (var i = 0; i < (finances.length -1 ); i++) {
 console.log('Average Change: '+Math.round(sum/85));
 
 // The greatest increase in profits (date and amount) over the entire period.
-
 var sum = 0;
 var increase = 0;
 var month = '';
@@ -125,9 +123,7 @@ for (var i = 1; i < finances.length; i++) {
 }
 console.log('Greatest Increase in Profits/Losses: ' + month +' ($'+increase+')')
 
-
 // The greatest decrease in losses (date and amount) over the entire period.
-
 var sum = 0;
 var decrease = 0;
 var month = '';
