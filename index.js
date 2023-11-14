@@ -87,53 +87,54 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-console.log('Financial Analysis')
-
-//The total number of months included in the dataset.
-console.log('Total Months: '+finances.length);
-
-//The net total amount of Profit/Losses over the entire period.
-var sum = 0;
-
-for (var i = 0; i <finances.length; i++) {
-  sum +=finances[i][1];
-}
-console.log('Total: '+'$'+sum)
-
 //The average of the changes in Profit/Losses over the entire period. answer -2315.12
 var sum = 0;
-
-for (var i = 0; i < (finances.length -1 ); i++) {
-  sum += finances[i+1][1] - finances[i][1]
-}
-console.log('Average Change: '+Math.round(sum/85));
-
-// The greatest increase in profits (date and amount) over the entire period.
-var sum = 0;
+var change=0
+var previousAmount=0
+var netChangeSum=0
+// The greatest increase/decrease in profits (date and amount) over the entire period.
 var increase = 0;
-var month = '';
-
-for (var i = 1; i < finances.length; i++) {
-  var sum = finances[i][1] - finances[i - 1][1];
-  if (sum > increase) {
-    increase=sum;
-    month = finances[i][0];
-    increase = finances[i][1] - finances[i-1][1];
-  }
-}
-console.log('Greatest Increase in Profits/Losses: ' + month +' ($'+increase+')')
-
-// The greatest decrease in losses (date and amount) over the entire period.
-var sum = 0;
 var decrease = 0;
 var month = '';
+var average;
 
-for (var i = 1; i < finances.length; i++) {
-  var sum = finances[i][1] - finances[i - 1][1];
-  if (sum < decrease) {
-    decrease=sum;
+
+
+
+//The net total amount of Profit/Losses over the entire period.
+
+
+for (var i = 0; i <finances.length; i++) {
+  var amount=finances[i][1];
+  sum +=amount
+  if(i>0)change = amount -previousAmount
+  previousAmount=amount
+  netChangeSum+=change
+  if (change > increase) {
+    increase=change;
     month = finances[i][0];
-    decrease = finances[i][1] - finances[i-1][1];
+    
+  }
+  if (change < decrease) {
+    decrease=change;
+    month = finances[i][0];
+ 
   }
 }
+
+average=Math.round((netChangeSum / (finances.length ))*100) / 100
+
+
+
+
+console.log('Financial Analysis')
+//The total number of months included in the dataset.
+console.log('Total Months: '+finances.length);
+console.log('Total: '+'$'+sum)
+
+
+console.log('Average Change: '+ average);
+
+console.log('Greatest Increase in Profits/Losses: ' + month +' ($'+increase+')')
+
 console.log('Greatest Decrease in Profits/Losses: ' + month +' ($'+decrease+')')
