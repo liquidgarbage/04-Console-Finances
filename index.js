@@ -87,7 +87,7 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
-//The average of the changes in Profit/Losses over the entire period. answer -2315.12
+
 var sum = 0;
 var change=0
 var previousAmount=0
@@ -98,12 +98,6 @@ var decrease = 0;
 var month = '';
 var average;
 
-
-
-
-//The net total amount of Profit/Losses over the entire period.
-
-
 for (var i = 0; i <finances.length; i++) {
   var amount=finances[i][1];
   sum +=amount
@@ -113,7 +107,6 @@ for (var i = 0; i <finances.length; i++) {
   if (change > increase) {
     increase=change;
     month = finances[i][0];
-    
   }
   if (change < decrease) {
     decrease=change;
@@ -122,16 +115,16 @@ for (var i = 0; i <finances.length; i++) {
   }
 }
 
-average=Math.round((netChangeSum / (finances.length ))*100) / 100
+average=Math.round((netChangeSum / (finances.length - 1))*100) / 100
 
 
 
 
 console.log('Financial Analysis')
-//The total number of months included in the dataset.
-console.log('Total Months: '+finances.length);
-console.log('Total: '+'$'+sum)
 
+console.log('Total Months: '+finances.length);
+
+console.log('Total: '+'$'+sum)
 
 console.log('Average Change: '+ average);
 
